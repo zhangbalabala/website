@@ -23,24 +23,22 @@ import {
 } from '@phosphor-icons/react';
 import InfoSection from '@/components/shared/sections/InfoSection';
 import usePricing from '@/hooks/usePricing';
-import { CouponType } from '@/lib/types';
 import { PricingSectionWrapper } from '@/components/shared/pricing/PricingSectionWrapper';
 import { stripeService } from '@/components/services/stripe.service';
 
 interface PricingProps {
+  lang: string;
   metatagsDescriptions: Record<string, any>[];
   navbarLang: Record<string, any>;
   footerLang: Record<string, any>;
-  lang: string;
   textContent: Record<string, any>;
-  homeComponentsLang: Record<string, any>;
 }
 
 const Pricing = ({ metatagsDescriptions, navbarLang, footerLang, lang, textContent }: PricingProps): JSX.Element => {
   const metatags = metatagsDescriptions.filter((desc) => desc.id === 'pricing');
 
   const { products, loadingCards, currencyValue, coupon, businessCoupon } = usePricing({
-    couponCode: CouponType.AllPlansCoupon,
+    // couponCode: CouponType.AllPlansCoupon,
   });
 
   const [pageName, setPageName] = useState('Pricing Individuals Annually');
